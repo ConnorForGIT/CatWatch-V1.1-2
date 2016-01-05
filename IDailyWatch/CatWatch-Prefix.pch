@@ -1,0 +1,33 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import"AFNetworking.h"
+#endif
+//简便Log
+#ifdef DEBUG
+#ifndef DLog
+#   define DLog(fmt, ...) {NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}
+#endif
+#ifndef ELog
+#   define ELog(err) {if(err) DLog(@"%@", err)}
+#endif
+#else
+#ifndef DLog
+#   define DLog(...)
+#endif
+#ifndef ELog
+#   define ELog(err)
+#endif
+#endif
